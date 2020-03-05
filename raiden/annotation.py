@@ -77,8 +77,7 @@ class Annotation(object):
                        -o {0}/50_annotation/annotation.gff \
                        {0}/50_annotation/annotation.gtf \
                        > {0}/log/gffread_gff.log \
-                       2>&1'.format(self.args.ref, 
-                                    self.args.out)
+                       2>&1'.format(self.args.out)
 
         cmd = clean_cmd(cmd)
 
@@ -96,7 +95,7 @@ class Annotation(object):
     def run_gffread(self):
         cmd = 'gffread -g {0} \
                        -w {1}/50_annotation/annotation.fasta \
-                       {1}/50_annotation/annotation.gtf \
+                       {1}/50_annotation/annotation.gff \
                        > {1}/log/gffread_fasta.log \
                        2>&1'.format(self.args.ref, 
                                     self.args.out)
