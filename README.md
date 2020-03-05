@@ -2,7 +2,7 @@
 
 ### How to install
 ```
-git clone git@github.com:YuSugihara/RaIDeN.git
+git clone https://github.com/YuSugihara/RaIDeN.git
 cd RaIDeN
 pip install .
 ```
