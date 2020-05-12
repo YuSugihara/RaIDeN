@@ -7,7 +7,9 @@ args = rp.set_options()
 import re
 import os
 import sys
+import glob
 import gzip
+import collections
 import subprocess as sbp
 from raiden.utils import time_stamp, clean_cmd, call_log
 
@@ -17,14 +19,39 @@ class Jiji(object):
     def __init__(self, args):
         rp.check_args(args)
         self.args = args
-        self.file_extension = self.args.gff.split('.')[-1]
+        self.bed_files = sorted(glob.glob("{}/*.bed".format(self.args.bed)))
+        self.N_bed_files = len(self.bed_files)
+        self.gff_extension = self.args.gff.split('.')[-1]
+        self.check_gff_extension()
 
         os.mkdir(self.args.out)
+
+    def check_gff_extension(self):
+        if self.gff_extension != 'gff' and self.gff_extension != 'gtf':
+            print(time_stamp(), 
+                  "!!WARNING!! {}'s extension is not 'gff' or 'gtf'\n".format(self.args.gff), 
+                  flush=True)
+            sys.exit(1)
+
+    def get_transcript_region(self):
+        input_annotation = open(self.args.gff)
+        output_annotation = open('{0}/transcript.{1}'.format(self.args.out, self.gff_extension), 'w')
+
+        not_comment = re.compile('[^#]')
+        for line in input_annotation:
+            if not_comment.match(line):
+                cols = line.split('\t')
+
+                if cols[2] == 'transcript':
+                    output_annotation.write(line)
+
+        input_annotation.close()
+        output_annotation.close()
 
     def filter_VCF(self):
         not_comment = re.compile('[^#]')
         with gzip.open(self.args.vcf, 'rt') as vcf:
-            with open('{}/filtered_mut.bed'.format(self.args.out), 'w') as filtered_mut: 
+            with open('{0}/filtered_markers.bed'.format(self.args.out), 'w') as filtered_markers: 
                 for line in vcf:
                     if not_comment.match(line):
                         cols = line.split('\t')
@@ -50,33 +77,21 @@ class Jiji(object):
                             if N_inconsistent > self.args.inconsistent:
                                 continue
 
-                        filtered_mut.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(contig_name, 
-                                                                                 position - 1,
-                                                                                 position, 
-                                                                                 ref, 
-                                                                                 alt, 
-                                                                                 N_miss, 
-                                                                                 N_inconsistent))
+                        filtered_markers.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(contig_name, 
+                                                                                     position - 1,
+                                                                                     position, 
+                                                                                     ref, 
+                                                                                     alt, 
+                                                                                     N_miss, 
+                                                                                     N_inconsistent))
 
     def check_mut_annotation(self):
-        file_extension = self.args.gff.split('.')[-1]
-
-        if self.file_extension == 'gff' or self.file_extension == 'gtf':
-            cmd = (r"awk -F '\t' "
-                   "'{{if ($3=="
-                   '"transcript")'
-                   "{{print $0}}}}' {0} | \
-                    bedtools intersect -wa -a stdin -b {1}/filtered_mut.bed | \
-                    sort -u 1> {1}/candidate_genes_from_mutations.{2} \
-                            2> {1}/jiji_mut_bedtools.log").format(self.args.gff, 
-                                                                  self.args.out, 
-                                                                  self.file_extension)
-
-        else:
-            print(time_stamp(), 
-                  "!!WARNING!! {}'s extension is not 'gff' or 'gtf'\n".format(self.args.gff), 
-                  flush=True)
-            sys.exit(1)
+        cmd = 'bedtools intersect -wa \
+                                  -a {0}/transcript.{1} \
+                                  -b {0}/filtered_markers.bed | \
+               sort -u 1> {0}/candidate_genes_from_mutations.{1} \
+                       2> {0}/jiji_mut_bedtools.log'.format(self.args.out, 
+                                                            self.gff_extension)
 
         cmd = clean_cmd(cmd)
 
@@ -90,26 +105,14 @@ class Jiji(object):
             call_log(self.args.out, 'jiji_mut_bedtools', cmd)
             sys.exit(1)
 
-    def check_PA_annotation(self):
-        if self.file_extension == 'gff' or self.file_extension == 'gtf':
-            cmd = (r"awk -F '\t' "
-                   "'{{if ($3=="
-                   '"transcript")'
-                   "{{print $0}}}}' {0} | \
-                   bedtools coverage -hist -a stdin -b {1}/*.bed | "\
-                   r"awk -F '\t' "
-                   "'{{if ($10<={2} && NF==13){{print $0}}}}' | \
-                   sort -u 1> {3}/candidate_genes_from_PA.temp \
-                           2> {3}/jiji_PA_bedtools.log").format(self.args.gff, 
-                                                                self.args.bed, 
-                                                                self.args.inconsistent,
-                                                                self.args.out)
-
-        else:
-            print(time_stamp(), 
-                  "!!WARNING!! {}'s extension is not 'gff' or 'gtf'\n".format(self.args.gff), 
-                  flush=True)
-            sys.exit(1)
+    def check_PA_coverage(self, index):
+        cmd = 'bedtools coverage -a {0}/transcript.{1} \
+                                 -b {2} \
+               1> {0}/candidate_genes_from_PA.{3}.bed \
+               2> {0}/jiji_PA_bedtools.log'.format(self.args.out,
+                                                   self.gff_extension,
+                                                   self.bed_files[index],
+                                                   index)
 
         cmd = clean_cmd(cmd)
 
@@ -123,36 +126,33 @@ class Jiji(object):
             call_log(self.args.out, 'jiji_PA_bedtools', cmd)
             sys.exit(1)
 
-    def check_PA_coverage(self):
-        temp = open('{0}/candidate_genes_from_PA.temp'.format(self.args.out))
-        PA_gff = open('{0}/candidate_genes_from_PA.{1}'.format(self.args.out, 
-                                                               self.file_extension), 'w')
+    def filter_and_count_PA(self):
+        lines = []
+        for i in range(self.N_bed_files):
+            with open('{0}/candidate_genes_from_PA.{1}.bed'.format(self.args.out, i)) as bed:
+                for line in bed:
+                    line = line.rstrip('\n')
+                    cols = line.split('\t')
+                    coverage = float(cols[-1])
 
-        previous_attribute = None
-        cumulative_coverage = 0
-        for line in temp:
-            line = line.rstrip('\n')
-            cols = line.split('\t')
+                    if coverage <= self.args.coverage:
+                        line = '\t'.join(cols[:-4])
+                        lines.append(line)
 
-            attribute = cols[8]
-            feature_coverage = float(cols[12])
+                os.remove('{0}/candidate_genes_from_PA.{1}.bed'.format(self.args.out, i))
 
-            if (previous_attribute != None) and (previous_attribute != attribute):
-                if cumulative_coverage <= self.args.coverage:
-                    PA_gff.write('{}\n'.format('\t'.join(cols[:9])))
-                cumulative_coverage = 0
-            else:
-                cumulative_coverage += feature_coverage
+        N_passed_PA = dict(collections.Counter(lines))
 
-            previous_attribute = attribute
-
-        os.remove('{0}/candidate_genes_from_PA.temp'.format(self.args.out))
+        with open('{0}/candidate_genes_from_PA.gff'.format(self.args.out), 'w') as gff:
+            for k, v in N_passed_PA.items():
+                if v >= self.N_bed_files - self.args.inconsistent:
+                    gff.write('{}\n'.format(k))
 
     def remove_duplicates(self):
         cmd = 'cat {0}/candidate_genes_from_*.{1} | \
                cut -f 1-9 | \
                sort -u > {0}/all_candidate_genes.{1}'.format(self.args.out, 
-                                                             self.file_extension)
+                                                             self.gff_extension)
 
         cmd = clean_cmd(cmd)
 
@@ -169,10 +169,14 @@ class Jiji(object):
             sys.exit(1)
 
     def run(self):
+        self.get_transcript_region()
         self.filter_VCF()
         self.check_mut_annotation()
-        self.check_PA_annotation()
-        self.check_PA_coverage()
+
+        for i in range(self.N_bed_files):
+            self.check_PA_coverage(i)
+
+        self.filter_and_count_PA()
         self.remove_duplicates()
 
 

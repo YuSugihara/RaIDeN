@@ -156,7 +156,8 @@ class Read_params(object):
                             action='store',
                             required=True,
                             type=str,
-                            help='GFF/GTF containing the gene annotations predicted by RNA-seq.')
+                            help='GFF/GTF containing the gene annotations predicted by RNA-seq.',
+                            metavar=')
 
         parser.add_argument('-v',
                             '--vcf',
@@ -188,7 +189,7 @@ class Read_params(object):
                             action='store',
                             default=0,
                             type=int,
-                            help='Number of the allowed inconsistent markers (SNPs/indels/PA). [0]',
+                            help='Number of the allowed inconsistent markers in SNPs and indels. [0]',
                             metavar='')
 
         parser.add_argument('--miss',
@@ -207,7 +208,8 @@ class Read_params(object):
                             action='store',
                             default=0.5,
                             type=float,
-                            help='Skip the gene whose coverage less than this parameter in PA marker. [0.5]')
+                            help='Skip the gene whose coverage more than this parameter in PA marker. [0.5]', 
+                            metavar='')
 
 
         # set version
