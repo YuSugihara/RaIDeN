@@ -157,7 +157,7 @@ class Read_params(object):
                             required=True,
                             type=str,
                             help='GFF/GTF containing the gene annotations predicted by RNA-seq.',
-                            metavar=')
+                            metavar='')
 
         parser.add_argument('-v',
                             '--vcf',
