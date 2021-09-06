@@ -102,10 +102,10 @@ optional arguments:
 
     RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If you are sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
 
-- #### RNA-seq to annotate genes (paired FASTQ format)
+- #### RNA-seq for genome annotation (paired FASTQ format)
 
-    RaIDeN requires RNA-seq to annotate genes. This RNA-seq must contain the causal gene because RaIDen analyzes only on the annotated genome region. RaIDeN allows multiple RNA-seq samples.
+    RaIDeN requires RNA-seq for genome annotation. This RNA-seq must contain the causal gene because RaIDen analyzes only on the annotated genome region. RaIDeN allows multiple RNA-seq samples.
 
-- #### Whole genome sequences (paired FASTQ format)
-    
+- #### Whole-genome sequences (paired FASTQ format)
 
+    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite phenotype to that of the reference genome. Since RaIDeN expects that the different phenotypes come from structual variation or mutation on the annotated genome region, this WGS must have a structual variation or mutation on the causal gene. RaIDeN allows multiple WGSs or bulked sequences.
