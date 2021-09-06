@@ -9,16 +9,14 @@
   + [How to install](#How-to-install)
 - [Usage](#Usage)
   + [Example 1 : run RaIDeN from FASTQ without trimming](#Example-1--run-RaIDeN-from-FASTQ-without-trimming)
-  + [Example 2 : run RaIDeN from FASTQ with trimming](#Example-2--run-RaIDeN-from-FASTQ-with-trimming)
-  + [Example 3 : run RaIDeN from BAM](#Example-3--run-RaIDeN-from-BAM)
-  + [Example 4 : run RaIDeN from multiple FASTQs and BAMs](#Example-4--run-RaIDeN-from-multiple-FASTQs-and-BAMs)
-  + [Example 5 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
+  + [Example 2 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
 - [Outputs](#Outputs)
 
 
 
 ## What is RaIDeN?
-RaIDeN is a pipeline for <u>**Ra**</u> pid **IDe**ntification of causal gene with target motif using **N**GS technology
+RaIDeN is a pipeline for **Ra**pid **IDe**ntification of causal gene with target motif using **N**GS technology.
+* Filtering the candidate genes based on target motif is not included in this pipeline.
 
 <img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=700>
 
