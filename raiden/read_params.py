@@ -47,11 +47,10 @@ class Read_params(object):
                             action='append',
                             required=True,
                             type=str,
-                            help=('Fastqs of RNA-seq to annotate the genes on the reference genome.\n'
-                                  'This RNA-seq must contain the reads of the causal gene.\n'
-                                  'If you have separated fastq files, You can use this optiion\n'
-                                  'for each pair of files. Please separate paired fastqs by\n'
-                                  'comma (e.g. -a fastq1,fastq2).'),
+                            help=('Fastqs of RNA-seq for genome annotation on input reference genome.\n'
+                                  'RNA-seq must contain the seqeunce reads of a causal gene.\n'
+                                  'You can use this optiion multiple times for each sample\n'
+                                  'Please separate paired fastqs by comma (e.g. -a fastq1,fastq2).\n'),
                             metavar='')
 
         parser.add_argument('-w',
@@ -59,11 +58,11 @@ class Read_params(object):
                             action='append',
                             required=True,
                             type=str,
-                            help=('Fastqs of whole-genome sequences to select causal genes.\n'
-                                  'Those samples must contain the opposite traits to the sample\n'
-                                  'used in the refernce genome. Please separate paired fastqs by\n'
-                                  'comma (e.g. -a fastq1,fastq2). You can use this optiion\n'
-                                  'multiple times for each sample.'),
+                            help=('Fastqs of whole-genome sequence to filter causal genes.\n'
+                                  'This sample should have an opposite trait to the sample\n'
+                                  'used for the refernce genome. You can use this optiion multiple\n'
+                                  'times for each sample. Please separate paired fastqs by comma\n'
+                                  '(e.g. -w fastq1,fastq2).'),
                             metavar='')
 
         parser.add_argument('-o',
@@ -80,20 +79,20 @@ class Read_params(object):
                             default=2,
                             type=int,
                             help=('Number of threads. If you specify the number below one,\n'
-                                  'then RaIDeN will use the threads as many as possible. [2]'),
+                                  'then RaIDeN will use the maximum number of threads. [2]'),
                             metavar='')
 
         parser.add_argument('-d',
                             '--disable-RNAseq-trim',
                             action='store_true',
                             default=False,
-                            help='Disable the trimming of RNA-seq by FaQCs.')
+                            help='Disable the trimming of RNA-seq reads by FaQCs.')
 
         parser.add_argument('-D',
                             '--disable-WGS-trim',
                             action='store_true',
                             default=False,
-                            help=('Disable the trimming of whole-genome sequences\n'
+                            help=('Disable the trimming of whole-genome sequence\n'
                                   'by FaQCs and prinseq-lite.'))
 
         parser.add_argument('-s',
@@ -101,9 +100,9 @@ class Read_params(object):
                             action='store',
                             default='None',
                             type=str,
-                            help=('Assume a strand library.\n'
-                                  " 'fr' : assume a strand library fr-firststrand.\n"
-                                  " 'rf' : assume a strand library fr-secondstrand.\n"
+                            help=('Strand library option.\n'
+                                  " 'fr' : assume a strand library fr-first strand.\n"
+                                  " 'rf' : assume a strand library fr-second strand.\n"
                                   " 'None' : Don't assume a strand library.\n"
                                   "Default is 'None'."),
                             metavar='')
@@ -113,7 +112,7 @@ class Read_params(object):
                             action='store',
                             default=200,
                             type=int,
-                            help=('Minimum length allowed for the predicted transcripts in\n'
+                            help=('Minimum length of the transcripts predicted by\n'
                                   'stringtie. [200]'),
                             metavar='')
 
@@ -122,7 +121,7 @@ class Read_params(object):
                             action='store',
                             default=40,
                             type=int,
-                            help='Minimum mapping quality in mpileup. [40]',
+                            help='Minimum mapping quality during mpileup. [40]',
                             metavar='')
 
         parser.add_argument('-Q',
@@ -130,7 +129,7 @@ class Read_params(object):
                             action='store',
                             default=18,
                             type=int,
-                            help='Minimum base quality in mpileup. [18]',
+                            help='Minimum base quality during mpileup. [18]',
                             metavar='')
 
         # set version
@@ -156,7 +155,7 @@ class Read_params(object):
                             action='store',
                             required=True,
                             type=str,
-                            help='GFF/GTF containing the gene annotations predicted by RNA-seq.',
+                            help='GFF/GTF containing gene annotation.',
                             metavar='')
 
         parser.add_argument('-v',
@@ -164,8 +163,7 @@ class Read_params(object):
                             action='store',
                             required=True,
                             type=str,
-                            help=('VCF file which contain the mutations of while-genome sequence\n'
-                                  'to filter the causal gene.'),
+                            help=('VCF generated by RaIDeN.'),
                             metavar='')
 
         parser.add_argument('-b',
@@ -173,8 +171,7 @@ class Read_params(object):
                             action='store',
                             required=True,
                             type=str,
-                            help=('Directory of BED files to distinguish the absence regions in the\n'
-                                  'input sequences from the presence regions in the reference genome.'),
+                            help=('Directory of BED files generated by RaIDeN.'),
                             metavar='')
 
         parser.add_argument('-o',
@@ -189,26 +186,26 @@ class Read_params(object):
                             action='store',
                             default=0,
                             type=int,
-                            help='Number of the allowed inconsistent markers in SNPs and indels. [0]',
+                            help='Number of the allowed inconsistent markers for SNPs and indels. [0]',
                             metavar='')
 
         parser.add_argument('--miss',
                             action='store',
                             default=0,
                             type=int,
-                            help='Number of the allowed missing markers in SNPs and indels. [0]',
+                            help='Number of the allowed missing markers for SNPs and indels. [0]',
                             metavar='')
 
         parser.add_argument('--count-het',
                             action='store_true',
                             default=False,
-                            help='Count heterozygotes with the reference allele into the caual mutation.')
+                            help='Count heterozygotes as causal mutation.')
 
         parser.add_argument('--coverage',
                             action='store',
                             default=0.5,
                             type=float,
-                            help='Skip the gene whose coverage more than this parameter in PA marker. [0.5]', 
+                            help='Skip a gene whose coverage more than this parameter for P/A marker. [0.5]', 
                             metavar='')
 
 
