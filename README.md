@@ -1,9 +1,11 @@
 # RaIDeN User Guide
-#### version 0.0.2
+#### version 0.0.2 (beta)
 
 
 ## Table of contents
 - [What is RaIDeN?](#What-is-RaIDeN)
+  + [What RaIDen requires](#What-RaIDen-requires)
+  + [Citation](#Citation)
 - [Installation](#Installation)
   + [Dependencies](#Dependencies)
   + [How to install](#How-to-install)
@@ -17,8 +19,17 @@
 ## What is RaIDeN?
 RaIDeN is a pipeline for <ins>**Ra**</ins>pid <ins>**IDe**</ins>ntification of causal gene with target motif using <ins>**N**</ins>GS technology.
 
-- RaIDeN automatically selects candidate genes.
-- Filtering the candidate genes based on target motif is not included in this pipeline.
+### What RaIDen requires:
+
+#### Reference genome (FASTA format)
+
+
+
+#### RNA-seq to annotate genes (FASTQ format)
+#### Whole genome sequences (FASTQ format)
+
+<!-- - RaIDeN automatically selects candidate genes.
+- Filtering the candidate genes based on target motif is not included in this pipeline. -->
 
 <img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=700>
 
