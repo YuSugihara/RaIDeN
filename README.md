@@ -46,7 +46,7 @@ RaIDeN is written in Python3.
 
 ### How to install
 
-Please run the following command lines.
+Please run the following command lines to install RaIDeN.
 
 ```
 git clone https://github.com/YuSugihara/RaIDeN.git
@@ -65,7 +65,7 @@ $ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools p
 
 ## What RaIDen requires:
 
-- #### Reference genome (FASTA format)
+- #### Reference genome (FASTA format; option `-r`)
 
     RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If it is sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
 
