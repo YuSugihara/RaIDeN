@@ -50,13 +50,10 @@ pip install .
 
 ### Installation via bioconda
 
-Currently, RaIDeN doesn't support the installation via bioconda. However, you can easily install its dependencies because they are deposited on bioconda.
-
-You can try the command below:
+Currently, RaIDeN doesn't support the installation via bioconda. However, you can easily install its dependencies because they are deposited on bioconda. You can try the command below:
 
 ```
-$ conda install -c bioconda samtools,bcftools,hisat2,bedtools,gffread,bamtools,stringtie,faqcs,prinseq
-$ conda install pigz
+$ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools pigz stringtie faqcs prinseq
 ```
 
 
