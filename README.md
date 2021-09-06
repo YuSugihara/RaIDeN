@@ -98,9 +98,9 @@ optional arguments:
 
 ### What RaIDen requires:
 
-#### Reference genome (FASTA format)
+- #### Reference genome (FASTA format)
 
 RaIDeN requires an assembled reference genome. If you are sure that the assembled reference genome contains a candidate gene, RaIDeN allows contiguous referece genome.
 
-#### RNA-seq to annotate genes (FASTQ format)
-#### Whole genome sequences (FASTQ format)
+- #### RNA-seq to annotate genes (FASTQ format)
+- #### Whole genome sequences (FASTQ format)
