@@ -29,6 +29,9 @@ pip install .
 - faqcs
 - prinseq-lite
 
+
+## Usage
+
 ```
 usage: raiden -r <FASTA>
               -a <FASTQ1>,<FASTQ2> 
