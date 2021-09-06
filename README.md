@@ -71,7 +71,7 @@ $ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools p
 
 - #### RNA-seq for genome annotation (paired FASTQ format; option `-a`)
 
-    RaIDeN requires RNA-seq for genome annotation. This RNA-seq must contain the causal gene because RaIDen analyzes only on the annotated genome region. RaIDeN allows multiple RNA-seq samples.
+    RaIDeN requires RNA-seq for genome annotation. This RNA-seq must contain the causal gene because RaIDen only analyzes the annotated genome region. RaIDeN allows multiple RNA-seq samples.
 
 - #### Whole-genome sequences (paired FASTQ format; option `-w`)
 
