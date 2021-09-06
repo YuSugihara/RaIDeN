@@ -100,7 +100,12 @@ optional arguments:
 
 - #### Reference genome (FASTA format)
 
-    RaIDeN requires an assembled reference genome. If you are sure that the assembled reference genome contains a candidate gene, RaIDeN allows contiguous referece genome.
+    RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If you are sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
 
-- #### RNA-seq to annotate genes (FASTQ format)
-- #### Whole genome sequences (FASTQ format)
+- #### RNA-seq to annotate genes (paired FASTQ format)
+
+    RaIDeN requires RNA-seq to annotate genes. This RNA-seq must contain the causal gene because RaIDen analyzes only on the annotated genome region. RaIDeN allows multiple RNA-seq samples.
+
+- #### Whole genome sequences (paired FASTQ format)
+    
+
