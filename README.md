@@ -17,7 +17,7 @@
 
 
 ## What is RaIDeN?
-RaIDeN is a pipeline for <ins>**Ra**</ins>pid <ins>**IDe**</ins>ntification of causal gene with target motif using <ins>**N**</ins>GS technology. RaIDeN automatically filter the candidate genes based on the patterns of structual variations and mutations.
+RaIDeN is a pipeline for <ins>**Ra**</ins>pid <ins>**IDe**</ins>ntification of causal gene with target motif using <ins>**N**</ins>GS technology. RaIDeN automatically filters the candidate genes based on the patterns of structual variations and mutations.
 
 <img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=700>
 
@@ -29,9 +29,12 @@ Shimizu M, Hirabuchi A, Sugihara Y, Abe A, Takeda T, Kobayashi M, Hiraka Y, Kanz
 
 ## Installation
 
+RaIDeN is written in Python3.
+
 ### Dependencies
-- samtools
-- bcftools
+- Python >= 3.5
+- samtools >= 1.7
+- bcftools >= 1.7
 - hisat2
 - bedtools
 - gffread
@@ -42,6 +45,9 @@ Shimizu M, Hirabuchi A, Sugihara Y, Abe A, Takeda T, Kobayashi M, Hiraka Y, Kanz
 - prinseq-lite
 
 ### How to install
+
+Please run the following command lines.
+
 ```
 git clone https://github.com/YuSugihara/RaIDeN.git
 cd RaIDeN
