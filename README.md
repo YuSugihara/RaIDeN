@@ -17,9 +17,7 @@
 
 
 ## What is RaIDeN?
-RaIDeN is a pipeline for <ins>**Ra**</ins>pid <ins>**IDe**</ins>ntification of causal gene with target motif using <ins>**N**</ins>GS technology.
-
-RaIDeN automatically filter the candidate genes based on the patterns of structual variations and mutations.
+RaIDeN is a pipeline for <ins>**Ra**</ins>pid <ins>**IDe**</ins>ntification of causal gene with target motif using <ins>**N**</ins>GS technology. RaIDeN automatically filter the candidate genes based on the patterns of structual variations and mutations.
 
 <img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=700>
 
