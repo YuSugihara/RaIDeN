@@ -12,7 +12,7 @@
 - [Usage](#Usage)
   + [Example 1 : run RaIDeN from FASTQ with trimming](#Example-1--run-RaIDeN-from-FASTQ-with-trimming)
   + [Example 2 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
-- [Outputs](#Outputs)
+- [Output files](#Output-files)
 
 
 
@@ -50,7 +50,7 @@ pip install .
 
 ### Installation via bioconda
 
-coming soon....
+prepaing now...
 
 
 ## What RaIDen requires:
@@ -113,7 +113,12 @@ optional arguments:
   -v, --version         show program's version number and exit
 ```
 
+RaIDeN can start from with or without trimming.
 
 + [Example 1 : run RaIDeN from FASTQ with trimming](#Example-1--run-RaIDeN-from-FASTQ-with-trimming)
 + [Example 2 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
 
+
+## Output files
+
+preparing now...
