@@ -1,7 +1,7 @@
 # RaIDeN
 
 ## What is RaIDeN?
-<img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.pdf" width=400>
+<img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.pdf" width=200>
 
 ### How to install
 ```
