@@ -51,6 +51,11 @@ cd RaIDeN
 pip install .
 ```
 
+### Installation via bioconda
+
+coming soon....
+
+
 ## Usage
 
 ```
@@ -100,7 +105,7 @@ optional arguments:
 
 - #### Reference genome (FASTA format)
 
-    RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If you are sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
+    RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If it is sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
 
 - #### RNA-seq for genome annotation (paired FASTQ format)
 
@@ -109,3 +114,5 @@ optional arguments:
 - #### Whole-genome sequences (paired FASTQ format)
 
     RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite phenotype to that of the reference genome. Since RaIDeN expects that the different phenotypes come from structual variation or mutation on the annotated genome region, this WGS must have a structual variation or mutation on the causal gene. RaIDeN allows multiple WGSs or bulked sequences.
+
+
