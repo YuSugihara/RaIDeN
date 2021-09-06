@@ -1,4 +1,21 @@
-# RaIDeN
+# RaIDeN User Guide
+#### version 2.2.2
+
+
+## Table of contents
+- [What is RaIDeN?](#What-is-RaIDeN)
+- [Installation](#Installation)
+  + [Dependencies](#Dependencies)
+  + [How to install](#How-to-install)
+- [Usage](#Usage)
+  + [Example 1 : run QTL-seq from FASTQ without trimming](#Example-1--run-QTL-seq-from-FASTQ-without-trimming)
+  + [Example 2 : run QTL-seq from FASTQ with trimming](#Example-2--run-QTL-seq-from-FASTQ-with-trimming)
+  + [Example 3 : run QTL-seq from BAM](#Example-3--run-QTL-seq-from-BAM)
+  + [Example 4 : run QTL-seq from multiple FASTQs and BAMs](#Example-4--run-QTL-seq-from-multiple-FASTQs-and-BAMs)
+  + [Example 5 : run QTL-plot from VCF](#Example-5--run-QTL-plot-from-VCF)
+- [Outputs](#Outputs)
+
+
 
 ## What is RaIDeN?
 RaIDeN is a pipeline for **Ra**pid **IDe**ntification of causal gene with target motif using **N**GS technology
@@ -10,12 +27,9 @@ Supplementary figure 1 in [Shimizu et al. (2021)](https://www.biorxiv.org/conten
 ### Citation
 Shimizu M, Hirabuchi A, Sugihara Y, Abe A, Takeda T, Kobayashi M, Hiraka Y, Kanzaki E, Oikawa K, Saitoh H, Langner T, Banfield MJ, Kamoun S, Terauchi R (2021) [A genetically linked pair of NLR immune receptors show contrasting patterns of evolution](https://www.biorxiv.org/content/10.1101/2021.09.01.458560v1). _bioRxiv_
 
-### How to install
-```
-git clone https://github.com/YuSugihara/RaIDeN.git
-cd RaIDeN
-pip install .
-```
+
+
+## Installation
 
 ### Dependencies
 - samtools
@@ -29,6 +43,12 @@ pip install .
 - faqcs
 - prinseq-lite
 
+### How to install
+```
+git clone https://github.com/YuSugihara/RaIDeN.git
+cd RaIDeN
+pip install .
+```
 
 ## Usage
 
