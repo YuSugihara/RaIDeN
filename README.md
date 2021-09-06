@@ -75,7 +75,7 @@ $ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools p
 
 - #### Whole-genome sequences (paired FASTQ format; option `-w`)
 
-    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite phenotype to that of the reference genome. Since RaIDeN expects that the different phenotypes come from structual variation or mutation on the annotated genome region, this WGS must have a structual variation or mutation on the causal gene. RaIDeN allows multiple WGSs or bulked sequences.
+    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite phenotype to that of the reference genome. Since RaIDeN expects that the different phenotypes come from structual variation or mutation on the annotated genome region, this WGS must have a structual variation or mutation on the causal gene. RaIDeN allows multiple WGSs or bulked (a.k.a pooled) sequences.
 
 
 
