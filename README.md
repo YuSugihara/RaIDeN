@@ -1,9 +1,9 @@
 # RaIDeN
 
 ## What is RaIDeN?
-RaIDeN is a pipeline for <u>Ra</u>pid <u>Ide</u>ntification of causal gene with target motif using <u>N</u>GS technology
+RaIDeN is a pipeline for **Ra**pid **Ide**ntification of causal gene with target motif using **N**GS technology
 
-<img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=800>
+<img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=700>
 
 Supplementary figure 1 in [Shimizu et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.09.01.458560v1)
 
