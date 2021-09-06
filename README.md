@@ -1,5 +1,5 @@
 # RaIDeN User Guide
-#### version 2.2.2
+#### version 0.0.2
 
 
 ## Table of contents
@@ -8,11 +8,11 @@
   + [Dependencies](#Dependencies)
   + [How to install](#How-to-install)
 - [Usage](#Usage)
-  + [Example 1 : run QTL-seq from FASTQ without trimming](#Example-1--run-QTL-seq-from-FASTQ-without-trimming)
-  + [Example 2 : run QTL-seq from FASTQ with trimming](#Example-2--run-QTL-seq-from-FASTQ-with-trimming)
-  + [Example 3 : run QTL-seq from BAM](#Example-3--run-QTL-seq-from-BAM)
-  + [Example 4 : run QTL-seq from multiple FASTQs and BAMs](#Example-4--run-QTL-seq-from-multiple-FASTQs-and-BAMs)
-  + [Example 5 : run QTL-plot from VCF](#Example-5--run-QTL-plot-from-VCF)
+  + [Example 1 : run RaIDeN from FASTQ without trimming](#Example-1--run-RaIDeN-from-FASTQ-without-trimming)
+  + [Example 2 : run RaIDeN from FASTQ with trimming](#Example-2--run-RaIDeN-from-FASTQ-with-trimming)
+  + [Example 3 : run RaIDeN from BAM](#Example-3--run-RaIDeN-from-BAM)
+  + [Example 4 : run RaIDeN from multiple FASTQs and BAMs](#Example-4--run-RaIDeN-from-multiple-FASTQs-and-BAMs)
+  + [Example 5 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
 - [Outputs](#Outputs)
 
 
