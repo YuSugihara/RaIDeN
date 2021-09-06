@@ -129,6 +129,33 @@ RaIDeN can start from with or without trimming.
 + [Example 2 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
 
 
+### Example 2 : run jiji from VCF
+
+```
+usage: jiji -a <GFF/GTF>
+            -v <VCF>
+            -b <BED_DIR>
+            -o <OUT_DIR> 
+             
+
+jiji version 0.0.2
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -a , --gff       GFF/GTF containing the gene annotations predicted by RNA-seq.
+  -v , --vcf       VCF file which contain the mutations of while-genome sequence
+                   to filter the causal gene.
+  -b , --bed       Directory of BED files to distinguish the absence regions in the
+                   input sequences from the presence regions in the reference genome.
+  -o , --out       Output directory. Specified name must not exist.
+  --inconsistent   Number of the allowed inconsistent markers in SNPs and indels. [0]
+  --miss           Number of the allowed missing markers in SNPs and indels. [0]
+  --count-het      Count heterozygotes with the reference allele into the caual mutation.
+  --coverage       Skip the gene whose coverage more than this parameter in PA marker. [0.5]
+  --version        show program's version number and exit
+```
+
+
 ## Output files
 
 preparing now...
