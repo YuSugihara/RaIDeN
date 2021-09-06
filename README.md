@@ -4,6 +4,7 @@
 RaIDeN is a pipeline for rapid identification of causal gene with target motif using NGS technology
 
 <img src="https://github.com/YuSugihara/RaIDeN/blob/master/images/Fig.S1.png" width=800>
+
 Suppl. Fig. 1 in [Shimizu et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.09.01.458560v1)
 
 ### Citation
