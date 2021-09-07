@@ -76,11 +76,17 @@ $ raiden -r reference.fasta \
 
 - #### `-a` : RNA-seq for gene annotation (paired FASTQ format)
 
-    RaIDeN requires RNA-seq for gene annotation. This RNA-seq must contain the sequences of causal gene because RaIDen only analyzes the annotated genomic region. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple RNA-seq samples.
+    RaIDeN requires RNA-seq for gene annotation. This RNA-seq must contain the sequences of causal gene because RaIDen only analyzes the annotated genomic region. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple RNA-seq samples. FASTQ files can be zipped.
 
 - #### `-w` : Whole-genome sequences (paired FASTQ format)
 
-    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite trait to that of the reference genome. Since RaIDeN expects that the different traits come from structual variation or mutation on the annotated genomic region, this WGS must have a structual variation or mutation on the causal gene. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple WGSs.
+    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite trait to that of the reference genome. Since RaIDeN expects that the different traits come from structual variation or mutation on the annotated genomic region, this WGS must have a structual variation or mutation on the causal gene. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple WGSs. FASTQ files can be zipped.
+
+- #### `-o` : Name of output directory
+
+    Specified name cannot exist.
+
+- #### `-t` : Number of thread
 
 
 ## Output files
