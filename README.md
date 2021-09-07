@@ -128,6 +128,21 @@ The directory `70_result` includes final results.
   + position -1 
   + position
   + reference base
-  + mutation
-  + number of missings
-  + number of inconsistent markers
+  + mutation base
+  + number of missings in WGSs
+  + number of inconsistent markers in WGSs
+
+
+### How to check the sequences of genes
+
+The directory `50_annotation` includes the result of gene annotation.
+
+```
+50_annotation
+├──   annotation.fasta
+├──   annotation.gff
+├──   annotation.gtf
+└──   RNA-seq.bam
+```
+
+You can check the nucleotide sequences of the genes predicted by RNA-seq in `annotation.fasta`.
