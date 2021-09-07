@@ -40,6 +40,7 @@ RaIDeN is written in Python3.
 - stringtie
 - faqcs
 - prinseq-lite
+- seqkit
 
 ### How to install
 
@@ -56,7 +57,7 @@ pip install .
 Currently, RaIDeN doesn't support the installation via bioconda. However, you can easily install its dependencies because they are distributed via bioconda. You can try the command below:
 
 ```
-$ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools pigz stringtie faqcs prinseq
+$ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools pigz stringtie faqcs prinseq seqkit
 ```
 
 
@@ -95,4 +96,38 @@ Selection by target motif has to be run separately by yourself.
 
 ## Output files
 
-preparing now...
+RaIDeN generates 8 directories.
+
+```
+Output directory
+├──   10_ref
+├──   20_fastq
+├──   30_bam
+├──   40_bed
+├──   50_annotation
+├──   60_vcf
+├──   70_result
+└──   log
+```
+
+The directory of `70_result` includes final results.
+
+```
+70_result
+├──   all_candidate_genes.gff
+├──   candidate_genes_from_mutations.gff
+├──   candidate_genes_from_PA.gff
+└──   filtered_markers.bed
+```
+
+- `all_candidate_genes.gff` : GFF file of all candidates genes
+- `candidate_genes_from_mutations.gff` : GFF file of candidates genes only from SNPs/INDELs
+- `candidate_genes_from_PA.gff` : GFF file of candidates genes only from presence/absence markers
+- `filtered_markers.bed` : BED file for the summary of mutations after filtering VCF. Columns are in this order.
+  + contig name
+  + position -1 
+  + position
+  + reference base
+  + mutation
+  + number of missings
+  + number of inconsistent markers
