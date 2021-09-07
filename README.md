@@ -10,8 +10,6 @@
   + [How to install](#How-to-install)
 - [What RaIDeN requires](#What-RaIDeN-requires)
 - [Quick Start Guide](#Quick-Start-Guide)
-  + [Example 1 : run RaIDeN from FASTQ with trimming](#Example-1--run-RaIDeN-from-FASTQ-with-trimming)
-  + [Example 2 : run jiji from VCF](#Example-5--run-QTL-plot-from-VCF)
 - [Output files](#Output-files)
 
 
