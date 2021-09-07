@@ -80,12 +80,22 @@ $ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools p
 ## Quick Start Guide
 
 ```
-$ raiden -r <FASTA> \
-         -a <FASTQ1>,<FASTQ2> \
-         -w <FASTQ1>,<FASTQ2> \
-         -o <OUT_DIR>  \
-         -t <INT>
+$ raiden -r reference.fasta \
+         -a rnaseq.1.fastq,rnaseq.2.fastq \
+         -w wgs.1.fastq,wgs.2.fastq \
+         -o test  \
+         -t 2
 ```
+
+`-r` : reference fasta.
+
+`-a` : FASTQs of RNA-seq for gene annotation.
+
+`-w` : FASTQs of WGS.
+
+`-t` : number of thread. 
+
+`-o` : name of output directory. Specified name must not exist.
 
 
 ## Output files
