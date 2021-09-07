@@ -88,6 +88,10 @@ $ raiden -r reference.fasta \
 
 - #### `-t` : Number of thread
 
+#### **WARNING**
+
+Selection by target motif has to be run separately by yourself.
+
 
 ## Output files
 
