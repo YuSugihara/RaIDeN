@@ -8,7 +8,6 @@
 - [Installation](#Installation)
   + [Dependencies](#Dependencies)
   + [How to install](#How-to-install)
-- [What RaIDeN requires](#What-RaIDeN-requires)
 - [Quick Start Guide](#Quick-Start-Guide)
 - [Output files](#Output-files)
 
@@ -61,22 +60,6 @@ $ conda install -c bioconda samtools bcftools hisat2 bedtools gffread bamtools p
 ```
 
 
-## What RaIDeN requires:
-
-- #### Reference genome (FASTA format; option `-r`)
-
-    RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If it is sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
-
-- #### RNA-seq for gene annotation (paired FASTQ format; option `-a`)
-
-    RaIDeN requires RNA-seq for gene annotation. This RNA-seq must contain the sequences of causal gene because RaIDen only analyzes the annotated genomic region. RaIDeN allows multiple RNA-seq samples.
-
-- #### Whole-genome sequences (paired FASTQ format; option `-w`)
-
-    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite trait to that of the reference genome. Since RaIDeN expects that the different traits come from structual variation or mutation on the annotated genomic region, this WGS must have a structual variation or mutation on the causal gene. RaIDeN allows multiple WGSs.
-
-
-
 ## Quick Start Guide
 
 ```
@@ -87,15 +70,17 @@ $ raiden -r reference.fasta \
          -t 2
 ```
 
-`-r` : reference fasta.
+- #### `-r` : Reference genome (FASTA format)
 
-`-a` : FASTQs of RNA-seq for gene annotation.
+    RaIDeN requires an assembled reference genome. This reference genome must contain a causal gene. If it is sure that the assembled reference genome contains the causal gene, RaIDeN allows contiguous (not chromosome-scale) referece genome.
 
-`-w` : FASTQs of WGS.
+- #### `-a` : RNA-seq for gene annotation (paired FASTQ format)
 
-`-t` : number of thread. 
+    RaIDeN requires RNA-seq for gene annotation. This RNA-seq must contain the sequences of causal gene because RaIDen only analyzes the annotated genomic region. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple RNA-seq samples.
 
-`-o` : name of output directory. Specified name must not exist.
+- #### `-w` : Whole-genome sequences (paired FASTQ format)
+
+    RaIDen requires whole-genome sequence (WGS). The sample of this WGS should have an opposite trait to that of the reference genome. Since RaIDeN expects that the different traits come from structual variation or mutation on the annotated genomic region, this WGS must have a structual variation or mutation on the causal gene. Paired FASTQ files have to be separated by commna (eg. fastq1,fastq2). RaIDeN allows multiple WGSs.
 
 
 ## Output files
