@@ -110,7 +110,7 @@ Output directory
 └──   log
 ```
 
-The directory of `70_result` includes final results.
+The directory `70_result` includes final results.
 
 ```
 70_result
@@ -120,9 +120,9 @@ The directory of `70_result` includes final results.
 └──   filtered_markers.bed
 ```
 
-- `all_candidate_genes.gff` : GFF file of all candidates genes
-- `candidate_genes_from_mutations.gff` : GFF file of candidates genes only from SNPs/INDELs
-- `candidate_genes_from_PA.gff` : GFF file of candidates genes only from presence/absence markers
+- `all_candidate_genes.gff` : GFF file including all candidates genes
+- `candidate_genes_from_mutations.gff` : GFF file including candidates genes only from SNPs/INDELs
+- `candidate_genes_from_PA.gff` : GFF file including candidates genes only from presence/absence markers
 - `filtered_markers.bed` : BED file for the summary of mutations after filtering VCF. Columns are in this order.
   + contig name
   + position -1 
