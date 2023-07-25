@@ -1,5 +1,5 @@
 # RaIDeN User Guide
-#### version 0.0.3 (beta)
+#### version 0.0.3
 
 
 ## Table of contents
