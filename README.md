@@ -3,13 +3,13 @@
 
 
 ## Table of contents
-- [What is RaIDeN?](#What-is-RaIDeN)
-  + [Citation](#Citation)
-- [Installation](#Installation)
-  + [Dependencies](#Dependencies)
-  + [How to install](#How-to-install)
-- [Quick Start Guide](#Quick-Start-Guide)
-- [Output files](#Output-files)
+- [What is RaIDeN?](#what-is-raiden)
+  + [Citation](#citation)
+- [Installation](#installation)
+  + [Dependencies](#dependencies)
+  + [How to install](#how-to-install)
+- [Quick Start Guide](#quick-start-guide)
+- [Output files](#output-files)
 
 
 
